@@ -12,5 +12,5 @@ else
 fi
 EOF
 chmod +x /etc/zabbix/scripts/agentd/lustre/lustre.sh
-cat "UserParameter=lustre.ping,/etc/zabbix/scripts/agentd/lustre/lustre.sh" > /etc/zabbix/zabbix_agentd.d/lustre.conf
+echo "UserParameter=lustre.ping,/etc/zabbix/scripts/agentd/lustre/lustre.sh" > /etc/zabbix/zabbix_agentd.d/lustre.conf
 systemctl restart zabbix-agent
