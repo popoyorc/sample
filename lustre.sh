@@ -2,7 +2,7 @@
 
 echo "=================="$(hostname)"==================="
 mkdir -p /etc/zabbix/scripts/agentd/lustre/
-cat << EOF
+cat <<EOF
 #!/bin/bash
 OUT=`lctl ping $(ifconfig bond0 | grep inet | awk '{print $2}' | cut -f2 -d:) 2>/dev/null | grep -e "12345-" | wc -l`
 if [[ ${OUT} == '2' ]]; then
