@@ -13,3 +13,4 @@ hostname
 #EOF > /etc/zabbix/scripts/agentd/lustre/lustre.sh
 #chmod +x /etc/zabbix/scripts/agentd/lustre/lustre.sh
 #cat "UserParameter=lustre.ping,/etc/zabbix/scripts/agentd/lustre/lustre.sh" > /etc/zabbix/zabbix_agent.d/lustre.conf
+systemctl restart zabbix-agent
