@@ -1,11 +1,6 @@
 #!/bin/bash
 yum install -y http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm && yum install -y zabbix-agent
 
-cat > /etc/resolv.conf << EOF
-nameserver 192.168.130.8
-nameserver 8.8.8.8
-EOF
-
 cat > /etc/zabbix/zabbix_agentd.conf << EOF
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix/zabbix_agentd.log
