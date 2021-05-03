@@ -16,8 +16,8 @@ cat > /etc/zabbix/zabbix_agentd.conf << EOF
 PidFile=/var/run/zabbix/zabbix_agentd.pid
 LogFile=/var/log/zabbix/zabbix_agentd.log
 LogFileSize=0
-Server=zabbix
-ServerActive=zabbix
+Server=192.168.4.5
+ServerActive=192.168.4.5
 HostMetadataItem=system.uname
 AllowRoot = 1
 EnableRemoteCommands=1
