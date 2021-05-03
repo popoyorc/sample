@@ -1,6 +1,8 @@
 #!/bin/bash
 
 
+PM=$(command -v yum || command -v apt)
+
 if [[ "$PM" == "/usr/bin/apt"  ]]; then
 	wget https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+$(lsb_release -sc)_all.deb
 	dpkg -i zabbix-release_5.0-1+$(lsb_release -sc)_all.deb
