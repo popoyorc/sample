@@ -1,5 +1,16 @@
 #!/bin/bash
-yum install -y http://repo.zabbix.com/zabbix/3.4/rhel/7/x86_64/zabbix-release-3.4-2.el7.noarch.rpm && yum install -y zabbix-agent
+
+
+if [[ "$PM" == "/usr/bin/apt"  ]]; then
+	wget https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+$(lsb_release -sc)_all.deb
+	dpkg -i zabbix-release_5.0-1+$(lsb_release -sc)_all.deb
+	apt update
+elif [[ "$PM" = "/usr/bin/yum" ]]; then
+	rpm -Uvh https://repo.zabbix.com/zabbix/5.0/rhel/$(rpm -E %{rhel})/x86_64/zabbix-release-5.0-1.el$(rpm -E %{rhel}).noarch.rpm
+	yum clean all
+fi
+
+$PM -y install zabbix-agent
 
 cat > /etc/zabbix/zabbix_agentd.conf << EOF
 PidFile=/var/run/zabbix/zabbix_agentd.pid
