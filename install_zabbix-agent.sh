@@ -21,8 +21,8 @@ LogFileSize=0
 Server=192.168.4.5
 ServerActive=192.168.4.5
 HostMetadataItem=system.uname
-AllowRoot = 1
 EnableRemoteCommands=1
+AllowRoot = 1
 Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
 
