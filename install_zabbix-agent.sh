@@ -11,7 +11,7 @@ elif [[ "$PM" = "/usr/bin/yum" ]]; then
 	
 fi
 
-$PM update
+$PM -y update
 $PM -y install zabbix-agent
 
 cat > /etc/zabbix/zabbix_agentd.conf << EOF
