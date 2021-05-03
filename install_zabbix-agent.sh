@@ -1,12 +1,5 @@
 #!/bin/bash
 
-HOST=192.168.4.5
-PORT=10050
-
-if nc -zw1 $HOST $PORT && echo | openssl s_client -connect $HOST:$PORT2>&1 | awk '
-  handshake && $1 == "Verification" { if ($2=="OK") exit; exit 1 }
-  $1 $2 == "SSLhandshake" { handshake = 1 }'
-then
 PM=$(command -v yum || command -v apt)
 
 if [[ "$PM" = *"apt"*  ]]; then
@@ -33,8 +26,19 @@ Include=/etc/zabbix/zabbix_agentd.d/*.conf
 EOF
 
 systemctl enable zabbix-agent; systemctl restart zabbix-agent; systemctl status zabbix-agent
-fi
 
+
+HOST=192.168.4.5
+PORT=10050
+
+if nc -zw1 $HOST $PORT && echo | openssl s_client -connect $HOST:$PORT2>&1 | awk '
+  handshake && $1 == "Verification" { if ($2=="OK") exit; exit 1 }
+  $1 $2 == "SSLhandshake" { handshake = 1 }'
+then
+	echo "Connection OK"
+else
+	echo "Connection KO"
+fi
 
 #sed --in-place=".OLD" -e 's/#.*$//' -e '/^$/d' -e '/Hostname/d' -e 's/Server=127.0.0.1/Server=zabbix/' -e 's/ServerActive=127.0.0.1/ServerActive=zabbix/' -e '5 a HostMetadataItem=system.uname' /etc/zabbix/zabbix_agentd.conf
 
