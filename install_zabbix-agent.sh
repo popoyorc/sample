@@ -29,7 +29,7 @@ systemctl enable zabbix-agent; systemctl restart zabbix-agent; systemctl status 
 
 
 HOST=192.168.4.5
-PORT=10050
+PORT=10051
 
 if nc -zw1 $HOST $PORT && echo | openssl s_client -connect $HOST:$PORT2>&1 | awk '
   handshake && $1 == "Verification" { if ($2=="OK") exit; exit 1 }
