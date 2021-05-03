@@ -34,7 +34,7 @@ EOF
 
 systemctl enable zabbix-agent; systemctl restart zabbix-agent; systemctl status zabbix-agent
 
-else
+elif
 	echo "Connection KO"
 fi
 
